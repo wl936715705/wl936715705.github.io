@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>myCar</title>
+    <script src="js/zepto.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!--<div id="load"></div>-->
+<div id="myCar"></div>
+
+
+<script src="js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/tween.min.js"></script>
+<script src="js/myCar.js"></script>
+</body>
+</html>

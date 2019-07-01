@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<section id="video" class="video">
+    <video id="v1" x-webkit-airplay="true" playsinline="" webkit-playsinline="" preload="meta" x5-playsinline="" x5-video-player-type="h5" x5-video-player-fullscreen="true" src="http://h5n.180china.com/jdpp/images/video1.mp4" class="video-box video2"></video>
+    <video id="v2" x-webkit-airplay="true" playsinline="" webkit-playsinline="" preload="meta" x5-playsinline="" x5-video-player-type="h5" x5-video-player-fullscreen="true" src="http://h5n.180china.com/jdpp/images/video2.mp4" class="video-box video2"></video>
+    <div id="btn_bg" style="position: absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0);z-index: 9;">
+        <div class="btn" style="position: absolute;width:2rem;height:1rem;bottom:1rem;left:2.75rem;background:#fff;"></div>
+    </div>
+</section>
+<audio id="bgm" src="media/zhadan.mp3" style="opacity: 0;width:0;height: 0;visibility: hidden;"></audio>
+</body>
+</html>
+<script src="global.js" ></script>
+<script src="zepto.min.js" ></script>
+<script>
+    var v1 = document.getElementById('v1');
+    var v2 = document.getElementById('v2');
+    var oBgm = document.getElementById('bgm');
+    document.addEventListener('DOMContentLoaded', function () {
+        v1.load();
+        v2.load();
+        oBgm.load();
+    });
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        v1.load();
+        v2.load();
+        oBgm.load();
+    }, false);
+    var index = 0;
+
+    v1.style.opacity = 1;
+    v2.style.opacity = 0;
+//    var currentTime;
+    $('.btn').on('click',function(){
+//        oBgm.play();
+        if (!ios) {
+            v1.play();
+            v2.play();
+            if(index == 0){
+                index = 1;
+                v1.style.opacity = 0;
+                v2.style.opacity = 1;
+                v1.volume = 0;
+                v2.volume = 1;
+                v2.currentTime = v1.currentTime;
+            }else{
+                index = 0;
+                v1.style.opacity = 1;
+                v2.style.opacity = 0;
+                v1.volume = 1;
+                v2.volume = 0;
+                v1.currentTime = v2.currentTime;
+            }
+        }else{
+            if(index == 0){
+                index = 1;
+                v1.style.opacity = 0;
+                v2.style.opacity = 1;
+                v1.pause();
+                v2.play();
+                v2.currentTime = v1.currentTime;
+            }else{
+                index = 0;
+                v1.style.opacity = 1;
+                v2.style.opacity = 0;
+                v1.play();
+                v2.pause();
+                v1.currentTime = v2.currentTime;
+            }
+        }
+    });
+</script>

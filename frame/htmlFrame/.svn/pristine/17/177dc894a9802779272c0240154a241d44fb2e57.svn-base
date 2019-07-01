@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我的足球密室</title>
+    <link rel="stylesheet" href="css/main.css?201807131716">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        if(clientWidth>=750){
+                            docEl.style.fontSize = '100px';
+                        }else{
+                            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                        }
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+
+<section id="loading">
+    <div class="load_box">
+        <div class="load_ball"></div>
+        <div class="load_num">0%</div>
+        <div class="load_txt"></div>
+        <div class="load_spot"></div>
+    </div>
+</section>
+
+<section id="home">
+    <div class="home_box">
+        <div class="home_inner">
+            <div class="home_con home_con0"></div>
+            <div class="home_con home_con1"></div>
+            <div class="home_con home_con2"></div>
+            <div class="home_con home_con3"></div>
+            <div class="home_con home_con4"></div>
+            <div class="home_con home_con5"></div>
+            <div class="home_con home_con6"></div>
+            <div class="home_con home_con7"></div>
+            <div class="home_con home_con8"></div>
+            <div class="home_con home_con9"></div>
+            <div class="home_con home_con10"></div>
+            <div class="home_con home_con11"></div>
+            <div class="home_con home_con12"></div>
+            <div class="home_con home_con13"></div>
+            <div class="home_con home_con14"></div>
+            <div class="home_con home_con15"></div>
+            <div class="home_con home_con16"></div>
+            <div class="home_con home_con17"></div>
+            <div class="num"></div>
+            <div class="magazine_btn"></div>
+            <div class="shirt_btn"></div>
+            <div class="CD_btn"></div>
+            <div class="poster_btn"></div>
+        </div>
+    </div>
+    <div class="tips_rule"></div>
+    <div class="tips_swipe"></div>
+</section>
+
+<section id="last">
+    <div class="enter"></div>
+    <div class="light"></div>
+    <div class="door_txt door_txt1"></div>
+    <div class="door_txt door_txt2"></div>
+    <div class="logo"></div>
+    <div class="slogan"></div>
+    <div class="erweima"></div>
+    <div class="erweima_txt"></div>
+</section>
+
+<section id="tips">
+    <div class="tips_magazine">
+        <div class="tips_btn"></div>
+    </div>
+    <div class="tips_shirt">
+        <div class="tips_btn"></div>
+    </div>
+    <div class="tips_CD">
+        <div class="tips_btn"></div>
+    </div>
+    <div class="tips_poster">
+        <div class="tips_btn"></div>
+    </div>
+</section>
+
+<div class="music_btn"></div>
+
+<section id="landscape"></section>
+
+<audio id="bgm" src="media/bgm4.mp3?201807131716" loop="loop" preload style="display: none;opacity: 0;width:0;height: 0;visibility:hidden;"></audio>
+
+<script src="js/global.js"></script>
+<script>
+    var URL = 'http://c.3viso.cn/v2/wangliang/htmlFrame/';//上线地址
+    var CDN = '';//cdn地址,无则空着勿删
+    var VER = "?201807131716";//版本号
+
+    var _w_link = URL;
+    var _w_imgUrl = URL + 'img/share.jpg'+VER;
+    var _w_title = 'htmlFrame';
+    var _w_desc = 'htmlFrame';
+    var _w_title2 = 'htmlFrame';
+
+    var bgm = document.getElementById('bgm');
+    document.addEventListener('DOMContentLoaded', function () {
+        bgm.load();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            bgm.load();
+        }, false);
+    });
+</script>
+<script src="js/zepto.min.js"></script>
+<script src="js/fastclick.js"></script>
+<!--<script src="js/main.js?201807131716"></script>-->
+<script src="js/htmlFrame.js?201807131716"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/share.js?201807131716"></script>
+<!--监测代码-->
+
+</body>
+</html>

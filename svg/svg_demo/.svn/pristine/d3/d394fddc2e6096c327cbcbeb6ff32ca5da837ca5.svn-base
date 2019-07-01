@@ -1,0 +1,16 @@
+<svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#ffffff" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" d="m130.847496,99.475673l0,0c0,-5.753796 6.412587,-10.418169 14.322914,-10.418169l6.510419,0l0,0l31.25,0l58.593734,0c3.798682,0 7.441769,1.097623 10.127843,3.051411c2.686057,1.953787 4.195079,4.603691 4.195079,7.366759l0,26.045426l0,0l0,15.627251l0,0c0,5.753799 -6.412583,10.418169 -14.322918,10.418169l-58.593734,0l-40.824269,26.490984l9.574269,-26.490984l-6.510419,0c-7.910326,0 -14.322914,-4.66437 -14.322914,-10.418169l0,0l0,-15.627251l0,0l-0.000004,-26.045426z" stroke-width="1.5" stroke="#000" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_3" y="129.5" x="165.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">你好</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_5" y="269.5" x="278.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">你好啊</text>
+ </g>
+</svg>

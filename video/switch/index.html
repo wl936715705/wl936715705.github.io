@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+		<section id="video" class="video">
+		    <video id="v3" x-webkit-airplay="true" playsinline="" webkit-playsinline="" preload="meta" x5-playsinline="" x5-video-player-type="h5" x5-video-player-fullscreen="true" src="http://tmall.lpiii.cn/618/static/video/big3.mp4" class="video-box video2"></video>
+		    <div id="btn_bg" style="position: absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0);z-index: 9;">
+		    	<div class="btn" style="position: absolute;width:2rem;height:1rem;bottom:1rem;left:2.75rem;background:#fff;"></div>
+		    </div>
+		</section>
+		<audio id="bgm" src="media/zhadan.mp3" style="opacity: 0;width:0;height: 0;visibility: hidden;"></audio>
+	</body>
+</html>
+<script type="text/javascript" src="zepto.min.js" ></script>
+<script>
+	var v3 = document.getElementById('v3');
+    var oBgm = document.getElementById('bgm');
+    document.addEventListener('DOMContentLoaded', function () {
+        v3.load();
+        oBgm.load();
+    });
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        v3.load();
+        oBgm.load();
+    }, false);
+	var index = 0;
+	$('.btn').on('click',function(){
+        v3.play();
+        oBgm.play();
+		index++;
+		if(index==3)index=0;
+		$(v3).css('-webkit-transform','translateX(-'+(7.5*index)+'rem)');
+	});
+</script>

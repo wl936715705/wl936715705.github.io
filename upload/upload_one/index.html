@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>上传图片-单张</title>
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/exif.js"></script>
+    <script src="js/uploadImage.js"></script>
+    <style type="text/css">
+        #test1,#test2{ width:100%; height:50px; display:block;}
+        #test1 img,#test2 img{width:100%; height:100%;}
+    </style>
+</head>
+<body>
+
+<input type="file" id="file_input1" accept="image/*" />
+<div id="test1"></div>
+
+<script>
+    var $upload_btn1 = $('#file_input1');
+    var $preview_img1 = $('#test1');
+
+    var aaa = new Public();
+    aaa.upload({
+        fileObj : $upload_btn1,
+        view : $preview_img1,//图片容器
+        maxSize : 1025,
+        quality :0.6,
+        uploadCancel : function(){  //取消上传...
+            console.log('取消上传');
+        },
+        uploadStart : function(){   //正在上传...
+            console.log('正在上传');
+        },
+        uploadError : function(){   //图片格式错误...
+            console.log('图片格式错误');
+        },
+        uploadEnd : function(dataURL){  //上传结束...
+            var img = new Image();
+            img.src = dataURL;
+            $preview_img1.append(img);
+            console.log('上传结束');
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>微信ios 页面顶起底部不回弹</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        if (clientWidth >= 750) {
+                            docEl.style.fontSize = '100px';
+                        } else {
+                            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                        }
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fl{
+            float: left;
+        }
+        input{
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+        .container1,.container2{
+            width: 5rem;
+            min-height: 6rem;
+            margin: 0 auto;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+
+        .container1 .tit,.container2 .tit{
+            width: 100%;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            font-size: .16rem;
+            background: #eee;
+        }
+        .container1 .list{
+            display: flex;
+            flex-direction: column;
+            /*align-items: center;*/
+            align-content: center;
+            width: 100%;
+        }
+        .container1 .item{
+            display: flex;
+            align-items: center;
+            margin-top: .3rem;
+        }
+        .container1 span{
+            font-size: .12rem
+        }
+        .container1 .input{
+            width: 3rem;
+            height: .3rem;
+            line-height: .3rem;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <div class="tit">标题</div>
+    <form>
+        <div class="list">
+            <div class="item">
+                <span>表单1：</span>
+                <div class="input"><input type="text" /></div>
+            </div>
+
+            <div class="item">
+                <span>表单2：</span>
+                <div class="input"><input type="text" /></div>
+            </div>
+
+            <div class="item">
+                <span>表单3：</span>
+                <div class="input"><input type="text" /></div>
+            </div>
+
+            <div class="item">
+                <span>表单4：</span>
+                <div class="input"><input type="text" /></div>
+            </div>
+
+            <div class="item">
+                <span>表单5：</span>
+                <div class="input"><input type="text" /></div>
+            </div>
+
+            <div class="item">
+                <span>表单6：</span>
+                <div class="input"><input type="text" /></div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    var ua = navigator.userAgent, wx = /MicroMessenger/i.test(ua), ios = /ip(?=od|ad|hone)/i.test(ua);
+    if (ios) {
+
+        jQuery(document).delegate('input, textarea', 'blur', function(){
+
+            setTimeout(function(){
+
+                jQuery('html').animate({height: '100.1vh'}, 100, function(){
+
+                    jQuery(this).animate({height: '100vh'}, 1);
+
+                });
+
+            },100);
+
+        });
+
+    }
+</script>
+</body>
+</html>

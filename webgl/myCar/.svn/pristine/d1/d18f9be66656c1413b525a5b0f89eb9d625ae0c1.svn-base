@@ -1,0 +1,474 @@
+*{
+padding: 0;
+margin: 0;
+}
+img{
+	display: block;
+}
+html,body{
+	font-size:90px;
+}
+#myCar{
+width: 100vw;
+height: 100vh;
+position: relative;
+background: #939b9e;
+}
+#my_cover_da{
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: url(../img/bg.jpg) #fff no-repeat center;
+	background-size: cover;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	/*display: none;*/
+}
+
+#num{
+color: #fff;
+font-size: 20px;
+}
+canvas{
+display: block;
+}
+.copyright{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 1.25rem;
+	font-size: 0.26rem;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: lighter;
+}
+.line_white{
+	width: 0.2rem;
+	height: 1px;
+	background: #fff;
+	margin:0 0.2rem;
+
+}
+
+
+
+.loading_logo{
+	width:150px;
+	height:150px;
+	background: url(../img/loading_logo.png) no-repeat center;
+	background-size: contain;
+	margin-bottom: 20px;
+}
+.loading_dunamic{
+	height:100%;
+	animation: bouncedelay 3s linear infinite;
+
+}
+
+
+.words{
+position: absolute;
+left: 50%;
+bottom:20px;
+transform: translate(-50%,0);
+display: flex;
+justify-content: space-between;
+height: 6.5vw;
+overflow: hidden;
+z-index: 10;
+width: 55vw;
+}
+
+
+
+
+@-webkit-keyframes bouncedelay {
+	0% { -webkit-transform: rotate(0deg) }
+	50% { -webkit-transform: rotate(180deg) }
+	100%{-webkit-transform: rotate(360deg)}
+}
+
+@keyframes bouncedelay {
+	0% { -webkit-transform: rotate(0deg) }
+	50% { -webkit-transform: rotate(180deg) }
+	100%{-webkit-transform: rotate(360deg)}
+}
+
+
+
+/*.animate_box{
+	width: 10%;
+	height:4.2vw;
+	position: absolute;
+	top:3.64vw;
+	left: 4.17vw;
+	display: flex;
+	list-style: none;
+	justify-content: space-between;
+	align-items: center;
+}*/
+.btn img:first-child{
+	display: none;
+}
+.light img:last-child{
+	display: none;
+}
+/*.animate_box li{
+	position: relative;
+	width:40%;
+	list-style: none;
+	height:100%;
+}
+.animate_box li img{
+	position: absolute;
+	left: 0;
+	top:0;
+	width:100%;
+}*/
+.bottom_btn{
+	width:100%;
+	height:6.15vw;
+	position: absolute;
+	bottom: 0.73vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tire_box{
+	position: absolute;
+	
+	top:0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+	
+	height: 100%;
+	display: none;
+	width:26%;
+	left: 30%;
+}
+.tire_box li{
+	list-style: none;
+	width: 25%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.tire_box li img{
+	width: 50%;
+}
+
+
+.tire_box li img:last-child{
+	width:70%;
+	display: none;
+}
+.tire_box .tire1 img:last-child{
+	display: block;
+}
+.tire1 img:first-child{
+	display: none;
+}
+
+.color_btn{
+	width:25%;
+	height:90%;
+	background: url(../img/btn/cbg.png) no-repeat center;
+	background-size: 100% 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+}
+.color_btn li{
+	list-style: none;
+	position: relative;
+	width:10%;
+	/*cursor: pointer;*/
+	height: 55%;
+	margin:0 0.9vw;
+}
+.color_btn li img{
+	width:100%;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+.color_btn li img:last-child{
+	display: none;
+}
+
+.color_btn li:first-child img:last-child{
+	display: block;
+}
+
+.seat_btn{
+	width:10%;
+	height:90%;
+	background: url(../img/btn/zybg.png) no-repeat center;
+	list-style: none;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	margin-left: 4vw;
+	background-size: contain;
+}
+
+.seat_btn li{
+	list-style: none;
+	position: relative;
+	width: 40%;
+	/*cursor: pointer;*/
+	height:120%;
+}
+.seat_btn li img{
+	width:60%;
+	left: 50%;
+	top:50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+}
+
+
+.music{
+	position: absolute;
+	top: 3.64vw;
+	right: 30px;
+	z-index: 111;
+	width:40px;
+	height:40px;
+	background: url(../img/btn/rect.png) no-repeat center;
+	background-size: 100% 100%;
+	overflow:hidden;
+}
+.music_stop, .loader-inner{
+	position: absolute;
+	left: 50%;
+	top:50%;
+	transform: translate(-50%,-50%) rotate(-45deg);
+	width: 200%;
+}
+.music_stop{
+	display: none;
+}
+.loader-inner{
+	width: 30px;
+	height: 20px;
+}
+
+
+
+/*音乐按钮*/
+#music_animate ul {
+	margin-top: 19px;
+	margin-left: 5px;
+	width: 100%;
+	height: 80%;
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+}
+#music_animate ul li{
+	height: 10%;
+	width: 2px;
+	background: #fff;
+	margin-right: 2px;
+	list-style: none;
+}
+
+#music_animate ul li:first-child{
+	margin-left: 6px;
+}
+#music_animate.active ul .li1{
+	 animation: waves 1.5s linear 0s infinite alternate;
+    -webkit-animation: waves 1.5s linear 0s infinite alternate;
+}
+#music_animate.active ul .li2{
+	animation: waves 1.5s linear 0.3s infinite alternate;
+    -webkit-animation: waves 1.5s linear 0.3s infinite alternate;
+}
+#music_animate.active ul .li3{
+	animation: waves 1.5s linear 0.6s infinite alternate;
+    -webkit-animation: waves 1.5s linear 0.6s infinite alternate;
+}
+#music_animate.active ul .li4{
+	 animation: waves 1.5s linear 0.9s infinite alternate;
+    -webkit-animation: waves 1.5s linear 0.9s infinite alternate;
+}
+#music_animate.active ul .li5{
+	 animation: waves 1.5s linear 1.2s infinite alternate;
+    -webkit-animation: waves 1.5s linear 1.2s infinite alternate;
+}
+@-webkit-keyframes waves {
+    0% {
+        -webkit-transform: scaleY(1);
+    }
+    25% {
+        -webkit-transform: scaleY(3);
+    }
+    50% {
+        -webkit-transform: scaleY(6);
+    }
+    75% {
+        -webkit-transform: scaleY(3);
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+    }
+}
+
+
+.words_control{
+	position: absolute;
+	font-size:20px;
+	width: 100%;
+	left: 0;
+	bottom:0.8rem;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.words_three{
+	list-style: none;
+	width: 15%;
+	display: flex;
+	justify-content: space-between;
+	margin-left: 6.7rem;
+	/*line-height: 1.54rem;*/
+	height: 1.34rem;
+	font-weight: lighter;
+	align-items: baseline;
+}
+.font_size{
+	font-size: 0.4rem;
+}
+
+.tire_view{
+	width: 0.5rem;
+	height: 0.5rem;
+	background: url(../img/tire_view.png) no-repeat center;
+	background-size: contain;
+	margin-right: 6.67rem;
+	margin-top: -0.8rem;
+	display: none;
+}
+.car_back{
+	width: 1.1rem;
+	height: 1.33rem;
+	background: url(../img/btn/back_car.png) no-repeat center;
+	background-size: contain;
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	display: none;
+	z-index: 1;
+}
+.car_box{
+	width: 5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	transform: translateX(-50%);
+	top:0.5rem;
+}
+.pre_car{
+	width: 0.12rem;
+	height: 0.14rem;
+	background: url(../img/btn/pre_car.png) no-repeat center;
+	background-size: contain;
+}
+.next_car{
+	width: 0.12rem;
+	height: 0.14rem;
+	background: url(../img/btn/next_car.png) no-repeat center;
+	background-size: contain;
+}
+.car_name{
+	list-style: none;
+}
+.jieda{
+	width: 2.44rem;
+	height: 0.65rem;
+	background: url(../img/btn/jieda.png) no-repeat center;
+	background-size: contain;
+	list-style: none;
+}
+.change_inout{
+	width: 100%;
+	height: 100%;
+	background: #000;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index:2;
+	display: none;
+}
+
+@media only screen and (max-width: 1080px){
+	html,body{
+		font-size: 9.26vw;
+	}
+	#my_cover_da{
+
+		background: url(../img/bg_m.jpg) #fff no-repeat center;
+		background-size: cover;
+	}
+	.animate_box{
+		width:25%;
+	}
+	.color_btn{
+		width:70%;
+
+	}
+	.color_btn li{
+		height: 73%;
+		width:13%;
+	}
+	.bottom_btn{
+		height:15.15vw;
+		overflow:hidden;
+	}
+	.seat_btn{
+		width:28%;
+	}
+	.words_control{
+		bottom:1.7rem;
+		font-size: 0.5rem;
+	}
+	.font_size{
+		font-size: 0.8rem;
+	}
+	.words_three{
+		width:5.8rem;
+		margin-left: 0.6rem;
+	}
+	.tire_box{
+		left: 0;
+		width: 65%;
+	}
+	.tire_view{
+		margin-right: 0.67rem;
+		width:1.5rem;
+		height: 1.5rem;
+	}
+
+
+
+
+
+}

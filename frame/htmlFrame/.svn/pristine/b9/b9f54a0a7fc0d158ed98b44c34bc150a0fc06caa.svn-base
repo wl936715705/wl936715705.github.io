@@ -1,0 +1,332 @@
+var loadImagesData = [];
+var loadImagesList = {};
+var loadCount = 0;
+var loadImagesListLen = 0;
+var imagesData = [];
+var imagesList = {};
+var count = 0;
+var imagesListLen = 0;
+var isSimulateLoad = false;//是否开启模拟加载器，默认false
+var isMusicPlay = false;
+
+var H5 = {
+    init : function(){
+        //初始化
+        var that = this;
+        loadImagesData.push({name: 'load_ball', path: 'img/loading/load_ball.png'});
+        loadImagesData.push({name: 'load_spot', path: 'img/loading/load_spot.png'});
+        loadImagesData.push({name: 'load_txt', path: 'img/loading/load_txt.png'});
+        for (var j = 0; j < loadImagesData.length; j++) {
+            loadImagesList[loadImagesData[j].name] = new Image();
+            loadImagesList[loadImagesData[j].name].src = CDN + loadImagesData[j].path + VER;
+        }
+
+        imagesData.push({name: 'continue_btn', path: 'img/public/continue_btn.png'});
+        imagesData.push({name: 'music_off', path: 'img/public/music_off.png'});
+        imagesData.push({name: 'music_on', path: 'img/public/music_on.png'});
+        imagesData.push({name: 'num1', path: 'img/public/num1.png'});
+        imagesData.push({name: 'num2', path: 'img/public/num2.png'});
+        imagesData.push({name: 'num3', path: 'img/public/num3.png'});
+        imagesData.push({name: 'num4', path: 'img/public/num4.png'});
+        imagesData.push({name: 'open_btn', path: 'img/public/open_btn.png'});
+
+        for(var i=0;i<18;i++){
+            imagesData.push({name: 'home_con'+i, path: 'img/home/'+i+'.jpg'});
+        }
+        imagesData.push({name: 'home_bg', path: 'img/home/home_bg.jpg'});
+
+        for(var i=0;i<54;i++){
+            imagesData.push({name: 'enter'+i, path: 'img/last/enter/'+i+'.jpg'});
+        }
+        imagesData.push({name: 'door_txt1', path: 'img/last/door_txt1.png'});
+        imagesData.push({name: 'door_txt2', path: 'img/last/door_txt2.png'});
+        imagesData.push({name: 'erweima', path: 'img/last/erweima.png'});
+        imagesData.push({name: 'erweima_txt', path: 'img/last/erweima_txt.png'});
+        imagesData.push({name: 'light', path: 'img/last/light.png'});
+        imagesData.push({name: 'logo', path: 'img/last/logo.png'});
+        imagesData.push({name: 'slogan', path: 'img/last/slogan.png'});
+
+        imagesData.push({name: 'tips_CD', path: 'img/tips/tips_CD.png'});
+        imagesData.push({name: 'tips_magazine', path: 'img/tips/tips_magazine.png'});
+        imagesData.push({name: 'tips_poster', path: 'img/tips/tips_poster.png'});
+        imagesData.push({name: 'tips_rule', path: 'img/tips/tips_rule.png'});
+        imagesData.push({name: 'tips_shirt', path: 'img/tips/tips_shirt.png'});
+        imagesData.push({name: 'tips_swipe', path: 'img/tips/tips_swipe.png'});
+
+        for (var j = 0; j < imagesData.length; j++) {
+            imagesList[imagesData[j].name] = new Image();
+            imagesList[imagesData[j].name].src = CDN + imagesData[j].path + VER;
+        }
+
+        for (var i in loadImagesList) {
+            loadImagesListLen++;
+            var _t = loadImagesList[i];
+            that.imgLoad(_t, function () {
+                loadCount++;
+                if (loadCount == loadImagesListLen) {
+                    that.loading();
+                }
+            });
+        }
+
+    },
+    loading : function(){
+        //加载
+        var that = this;
+        var loadNum = 0;
+        var $loading = $('#loading');
+        $('.load_ball').css({'background-image':'url('+loadImagesList['load_ball'].src+')','background-repeat':'no-repeat'});
+        $('.load_spot').css({'background-image':'url('+loadImagesList['load_spot'].src+')','background-repeat':'no-repeat'});
+        $('.load_txt').css({'background-image':'url('+loadImagesList['load_txt'].src+')','background-repeat':'no-repeat'});
+        $loading.fadeIn(0);
+        if(!isSimulateLoad){
+            //不启用加载模拟器
+            for (var i in imagesList) {
+                imagesListLen++;
+                var _t = imagesList[i];
+                that.imgLoad(_t, function () {
+                    count++;
+                    loadNum = Math.floor(count/imagesListLen*100);
+                    if (count == imagesListLen) {
+                        loadEnd();
+                    }
+                    progressAin();
+                });
+            }
+        }else{
+            //启用加载模拟器
+            var simulateLoad_flag = false;
+            var rn = 50+Math.round(Math.random()*45);
+            for (var i in imagesList) {
+                imagesListLen++;
+                var _t = imagesList[i];
+                that.imgLoad(_t, function () {
+                    count++;
+                    if (count >= imagesListLen) {
+                        simulateLoad_flag = true;
+                    }
+                });
+            }
+            var simulateLoadTimer = setInterval(function () {
+                if (!simulateLoad_flag) {
+                    loadNum++;
+                    if (loadNum >= rn && !simulateLoad_flag) {
+                        loadNum = rn;
+                    }
+                } else {
+                    loadNum++;
+                    if (loadNum >= 100) {
+                        loadNum = 100;
+                        clearInterval(simulateLoadTimer);
+                        loadEnd();
+                    }
+                }
+                progressAin();
+            }, 30);
+        }
+        function loadEnd(){
+            setTimeout(function () {
+                $loading.fadeOut(200, function () {
+                    $(this).remove();
+                    that.setHtml();
+                });
+            }, 500);//控制loading消失时间
+        }
+        function progressAin(){
+            $('.load_num').html(loadNum+'%');
+        }
+    },
+    setHtml : function(){
+        //设置html图片内容
+        var that = this;
+        for(var i=0;i<18;i++){
+            $('.home_con'+i).css({'background-image':'url('+imagesList['home_con'+i].src+')','background-repeat':'no-repeat'});
+        }
+        $('.home_inner').css({'background-image':'url('+imagesList['home_bg'].src+')','background-repeat':'no-repeat'});
+        $('.tips_rule').css({'background-image':'url('+imagesList['tips_rule'].src+')','background-repeat':'no-repeat'});
+        $('.tips_swipe').css({'background-image':'url('+imagesList['tips_swipe'].src+')','background-repeat':'no-repeat'});
+        $('.tips_magazine').css({'background-image':'url('+imagesList['tips_magazine'].src+')','background-repeat':'no-repeat'});
+        $('.tips_shirt').css({'background-image':'url('+imagesList['tips_shirt'].src+')','background-repeat':'no-repeat'});
+        $('.tips_CD').css({'background-image':'url('+imagesList['tips_CD'].src+')','background-repeat':'no-repeat'});
+        $('.tips_poster').css({'background-image':'url('+imagesList['tips_poster'].src+')','background-repeat':'no-repeat'});
+        $('.tips_btn').css({'background-image':'url('+imagesList['continue_btn'].src+')','background-repeat':'no-repeat'});
+        $('.door_txt1').css({'background-image':'url('+imagesList['door_txt1'].src+')','background-repeat':'no-repeat'});
+        $('.door_txt2').css({'background-image':'url('+imagesList['door_txt2'].src+')','background-repeat':'no-repeat'});
+        $('.light').css({'background-image':'url('+imagesList['light'].src+')','background-repeat':'no-repeat'});
+        $('.logo').css({'background-image':'url('+imagesList['logo'].src+')','background-repeat':'no-repeat'});
+        $('.slogan').css({'background-image':'url('+imagesList['slogan'].src+')','background-repeat':'no-repeat'});
+        $('.erweima').append(imagesList['erweima']);
+        $('.erweima_txt').css({'background-image':'url('+imagesList['erweima_txt'].src+')','background-repeat':'no-repeat'});
+        that.home();
+    },
+    home : function(){
+        //首页
+        var that = this;
+        var $home = $('#home');
+        var $tips_rule = $('.tips_rule');
+        var $tips_btn = $('.tips_btn');
+        var num = 0;
+
+        that.musicPlay();
+        $("body").off("touchmove", prevent);
+        $home.fadeIn(200);
+
+        $tips_rule.on('click',function(){
+            $(this).off('click');
+            $('.tips_rule').fadeOut(200);
+            $('.tips_swipe').fadeOut(200);
+        });
+        $home.on('swipeLeft',function(){
+            $(this).off('swipeLeft');
+            $('.tips_rule').fadeOut(200);
+            $('.tips_swipe').fadeOut(200);
+        });
+        //杂志按钮
+        $('.magazine_btn').on('click',function(){
+            $(this).off('click');
+            tips_show('magazine');
+        });
+        //球衣按钮
+        $('.shirt_btn').on('click',function(){
+            $(this).off('click');
+            tips_show('shirt');
+        });
+        //光盘按钮
+        $('.CD_btn').on('click',function(){
+            $(this).off('click');
+            tips_show('CD');
+        });
+        //海报按钮
+        $('.poster_btn').on('click',function(){
+            $(this).off('click');
+            tips_show('poster');
+        });
+
+        function tips_show(type){
+            $('#tips').fadeIn(0);
+            num += 1;
+            if(num >= 4){
+                $tips_btn.css({'background-image':'url('+imagesList['open_btn'].src+')','background-repeat':'no-repeat'});
+            }
+            $('.num').css({'background-image':'url('+imagesList['num'+num].src+')','background-repeat':'no-repeat'});
+            $('.tips_'+type+'').addClass('show');
+            $tips_btn.on('click',function(){
+                $('#tips').fadeOut(0);
+                $('.tips_'+type+'').removeClass('show');
+                if(num >= 4){
+                    that.last();
+                }
+            });
+        }
+    },
+    last : function(){
+        //尾页
+        var that = this;
+        var $enter = $('.enter');
+        var n = 0;
+        var enter_timer;
+        $("body").on("touchmove", prevent);
+        $enter.html(imagesList['enter'+n]);
+        $('#last').fadeIn(200,function(){
+            $('.door_txt1').animate({'opacity':'1'},500,'linear',function(){
+                $('.door_txt2').animate({'opacity':'1'},500,'linear',function(){
+
+                    setTimeout(function(){
+                        $('.door_txt').fadeOut(200);
+                        $('.light').fadeOut(200,function(){
+                            enter_timer = setInterval(enterPlayer,80);
+                        });
+                    },1500);
+
+                },300);
+            },300);
+        });
+
+        function enterPlayer(){
+            n++;
+            if(n >= 53){
+                clearInterval(enter_timer);
+                last_ani();
+            }
+            $enter.html(imagesList['enter'+n]);
+        }
+
+        function last_ani(){
+            $('.logo').fadeIn(200,function(){
+                $('.slogan').addClass('show');
+                setTimeout(function(){
+                    $('.erweima').fadeIn(300);
+                    $('.erweima_txt').fadeIn(300);
+                },500);
+            });
+        }
+    },
+    musicPlay : function(){
+        //音乐
+        var that = this;
+        var $music_btn = $('.music_btn');
+        $music_btn.fadeIn(200);
+        $music_btn.css({'background-image':'url('+imagesList['music_off'].src+')'});
+        //isMusicPlay = true;
+        //bgm.play();
+        $music_btn.on('click',musicBtnClick);
+
+        function musicBtnClick(){
+            if (isMusicPlay) {
+                isMusicPlay = false;
+                bgm.pause();
+                $(this).css({'background-image':'url('+imagesList['music_off'].src+')','background-repeat':'no-repeat'});
+            } else {
+                isMusicPlay=true;
+                bgm.play();
+                $(this).css({'background-image':'url('+imagesList['music_on'].src+')','background-repeat':'no-repeat'});
+            }
+        }
+    },
+    imgLoad : function(img,callback){
+        //图片加载方式函数
+        var that = this;
+        var timer = setInterval(function () {
+            if (img.complete) {
+                callback();
+                clearInterval(timer);
+            }
+        }, 50);
+    }
+};
+
+/**
+ * 判断横竖屏
+ */
+function orien(){
+    var initFlag = true;
+    var portrait = false;
+    if (window.orientation == 90 || window.orientation == -90) {
+        if (initFlag) {
+            initFlag = false;
+            portrait = true;
+        }
+        $("#landscape").show();
+    } else {
+        $("#landscape").hide();
+        if (portrait) {
+            window.location.reload(true);
+        } else {
+            if (initFlag) {
+                initFlag = false;
+            }
+        }
+    }
+}
+orien();
+$(window).on("orientationchange", orien);
+
+function prevent(){
+    event.preventDefault();
+}
+
+FastClick.attach(document.body);//点击屏幕阻止页面跳动
+$(function(){
+    $("body").on("touchmove", prevent);
+    H5.init();
+});

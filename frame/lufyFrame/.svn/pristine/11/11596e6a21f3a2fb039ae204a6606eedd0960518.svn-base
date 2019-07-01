@@ -1,0 +1,373 @@
+@charset "utf-8";
+/*@font-face {*/
+    /*font-family:buick;*/
+    /*src: url('../fonts/buick.TTF') format('truetype');*/
+/*}*/
+/*==================reset ===================*/
+/*rem计算 width:750px-PSD*/
+html{font-size: 100px;}
+@media only screen and (max-width: 600px) {
+    html{font-size: 80px;}
+}
+@media only screen and (max-width: 540px) {
+    html{font-size: 72px;}
+}
+@media only screen and (max-width: 480px) {
+    html{font-size: 64px;}
+}
+@media only screen and (max-width: 435px) {
+    html{font-size: 58px;}
+}
+@media only screen and (max-width: 414px) {
+    html{font-size: 55.2px;}
+}
+@media only screen and (max-width: 412px) {
+    html{font-size: 54.93333333333333px;}
+}
+@media only screen and (max-width: 411px) {
+    html{font-size: 54.8px;}
+}
+@media only screen and (max-width: 393px) {
+    html{font-size: 52.4px;}
+}
+@media only screen and (max-width: 390px) {
+    html{font-size: 52px;}
+}
+@media only screen and (max-width: 386px) {
+    html{font-size: 51.46666666666667px;}
+}
+@media only screen and (max-width: 384px) {
+    html{font-size: 51.2px;}
+}
+@media only screen and (max-width: 375px) {
+    html{font-size: 50px;}
+}
+@media only screen and (max-width: 360px) {
+    html{font-size: 48px;}
+}
+@media only screen and (max-width: 320px) {
+    html{font-size: 42.66666666666667px;}
+}
+
+*{margin: 0;padding: 0;}
+html, body {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    /*background: #cdcdcc url("../img/public/bg1.png") no-repeat center;*/
+    /*background-size: 7.5rem 15rem;*/
+    overflow: hidden;
+}
+ul, li {
+    display: block;
+    list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+p,img{
+    display: block;
+}
+a,a:hover{
+    text-decoration: none;
+}
+em {
+    font-style: normal;
+}
+
+button {
+    font-family: Tahoma, Verdana, Arial;
+    font-weight: normal;
+}
+a, button, input, img,div,p,em,span {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+:focus {
+
+    outline: 0;
+
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.show{
+    display: block!important;
+}
+.hide {
+    display: none!important;
+}
+.hidden {
+    visibility: hidden;
+}
+/* ios设备平滑滚动 */
+.smooth_slide {
+    -webkit-overflow-scrolling: touch;
+}
+.img_respond{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+section{
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 10;
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/**
+ *landscape
+ */
+#landscape{
+    background: url('../img/landscape.jpg') 50% 50%;
+    background-size: cover;
+    z-index: 9999;
+}
+
+#poster,#video{
+    bottom: 0;
+    height: 100%;
+    margin: auto;
+}
+/*#video video{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 10;
+    opacity: 0;
+    object-fit: fill;
+    overflow: hidden;
+}*/
+
+/**
+ *main
+ */
+#main{
+    display: block;
+}
+
+/**
+ *请假条
+ */
+#poster .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+.poster_bg,.save{
+    position: absolute;
+    bottom: 1.8rem;
+    left: 0.54rem;
+    z-index: 10;
+    width: 6.3rem;
+    height: 9.13rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.poster_bg{
+    box-shadow: 0px 8px 18px 2px rgba(0,0,0,.5);
+}
+.poster_bg .txt{
+    position: absolute;
+    top: 4.36rem;
+    left: 0.88rem;
+    z-index: 10;
+    width: 4.63rem;
+    height: 0.95rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.name{
+    display: block;
+    position: absolute;
+    top: 3.08rem;
+    left: 1.87rem;
+    z-index: 10;
+    width: 3.72rem;
+    height: 0.34rem;
+    line-height: 0.34rem;
+    font-size: 0.26rem;
+    font-family: 'Arial';
+    text-align: center;
+    color: #000;
+    background: transparent;
+    border: none;
+}
+.month,.day,.span_month,.span_day{
+    position: absolute;
+    top: 3.74rem;
+    z-index: 10;
+    width: 1.88rem;
+    height: 0.3rem;
+    line-height: 0.36rem;
+    font-size: 0.26rem;
+    font-family: 'Arial';
+    text-align: center;
+    color: #000;
+    background: transparent;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    opacity: 0;
+}
+.span_month,.span_day{
+    display: block;
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 0.14rem 0.18rem;
+}
+.month,.span_month{
+    left: 1.17rem;
+}
+.day,.span_day{
+    left: 3.45rem;
+}
+.arrow_l,.arrow_r{
+    position: absolute;
+    top: 6.89rem;
+    z-index: 10;
+    width: 0.35rem;
+    height: 0.64rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    opacity: 0;
+}
+.arrow_l{
+    left: 0.06rem;
+    -webkit-animation: arrow_l .3s linear infinite alternate;
+    animation: arrow_l .3s linear infinite alternate;
+}
+.arrow_r{
+    right: 0.06rem;
+    -webkit-animation: arrow_r .3s linear infinite alternate;
+    animation: arrow_r .3s linear infinite alternate;
+}
+.arrow_l.ani{
+    opacity: 1;
+}
+.arrow_r.ani{
+    opacity: 1;
+}
+.save{
+ display: none;
+}
+.save img{
+    width: 100%;
+    height: auto;
+}
+.again_btn,.show_btn{
+    position: absolute;
+    bottom: 0.6rem;
+    z-index: 10;
+    width: 2.6rem;
+    height: 0.82rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.again_btn{
+    left: 0.45rem;
+}
+.show_btn{
+    left: 4.37rem;
+}
+
+/**
+ *tips
+ */
+#tips{
+    /*display: block;*/
+    position: fixed;
+    background-color: rgba(0,0,0,.7);
+}
+.tips_save{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    width: 3.95rem;
+    height: 3.06rem;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.music_btn{
+    display: none;
+    position: fixed;
+    top: 0.41rem;
+    left: 6.26rem;
+    z-index: 10;
+    width: 0.56rem;
+    height: 0.56rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/**
+ *动画
+ */
+@-webkit-keyframes arrow_l {
+    0%{
+        -webkit-transform: translate3d(0,0,0);
+    }
+    100%{
+        -webkit-transform: translate3d(-0.05rem,0,0);
+    }
+}
+@keyframes arrow_l {
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        transform: translate3d(-0.05rem,0,0);
+    }
+}
+@-webkit-keyframes arrow_r {
+    0%{
+        -webkit-transform: translate3d(0,0,0);
+    }
+    100%{
+        -webkit-transform: translate3d(0.05rem,0,0);
+    }
+}
+@keyframes arrow_r {
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        transform: translate3d(0.05rem,0,0);
+    }
+}

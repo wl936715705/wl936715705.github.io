@@ -1,0 +1,655 @@
+@charset "utf-8";
+/*==================reset ===================*/
+/*rem计算 width:750px-PSD*/
+html{font-size: 100px;}
+@media only screen and (max-width: 600px) {
+    html{font-size: 80px;}
+}
+@media only screen and (max-width: 540px) {
+    html{font-size: 72px;}
+}
+@media only screen and (max-width: 480px) {
+    html{font-size: 64px;}
+}
+@media only screen and (max-width: 435px) {
+    html{font-size: 58px;}
+}
+@media only screen and (max-width: 414px) {
+    html{font-size: 55.2px;}
+}
+@media only screen and (max-width: 412px) {
+    html{font-size: 54.93333333333333px;}
+}
+@media only screen and (max-width: 411px) {
+    html{font-size: 54.8px;}
+}
+@media only screen and (max-width: 393px) {
+    html{font-size: 52.4px;}
+}
+@media only screen and (max-width: 390px) {
+    html{font-size: 52px;}
+}
+@media only screen and (max-width: 386px) {
+    html{font-size: 51.46666666666667px;}
+}
+@media only screen and (max-width: 384px) {
+    html{font-size: 51.2px;}
+}
+@media only screen and (max-width: 375px) {
+    html{font-size: 50px;}
+}
+@media only screen and (max-width: 360px) {
+    html{font-size: 48px;}
+}
+@media only screen and (max-width: 320px) {
+    html{font-size: 42.66666666666667px;}
+}
+
+*{margin: 0;padding: 0;}
+html, body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+ul, li {
+    display: block;
+    list-style: none;
+}
+a,a:hover{
+    text-decoration: none;
+}
+em {
+    font-style: normal;
+}
+
+button {
+    font-family: Tahoma, Verdana, Arial;
+    font-weight: normal;
+}
+a, button, input, img {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+:focus {
+    outline: 0;
+}
+.clearfix {
+    zoom: 1
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+p,img,.show{
+    display: block;
+}
+img[src=''] {
+    display: none;
+    opacity:0;
+}
+.hide {
+    display: none;
+}
+.hidden {
+    visibility: hidden;
+}
+/* ios设备平滑滚动 */
+.smooth_slide {
+    -webkit-overflow-scrolling: touch;
+}
+.img_respond{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+section{
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 10;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+/**
+ *landscape
+ */
+#landscape{
+    background: url('../img/landscape.jpg') 50% 50%;
+    background-size: cover;
+    z-index: 9999;
+}
+
+#loading,#home,#last{
+    bottom:0;
+    height: 15rem;
+    margin: auto;
+}
+
+#main{
+    display: block;
+}
+
+/**
+ *加载
+ */
+#loading{}
+.load_box{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    width: 2.54rem;
+    height: 2.89rem;
+    margin: auto;
+}
+.load_ball{
+    position: absolute;
+    top: 0;
+    left: 0.56rem;
+    z-index: 10;
+    width: 1.36rem;
+    height: 1.36rem;
+    background-size: 100% 100%;
+    -webkit-animation: load_ball 1.5s linear 0s infinite;
+    animation: load_ball 1.5s linear 0s infinite;
+}
+.load_num{
+    position: absolute;
+    top: 1.62rem;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #000;
+}
+.load_txt{
+    position: absolute;
+    top: 2.4rem;
+    left: 0;
+    z-index: 10;
+    width: 2.54rem;
+    height: 0.24rem;
+    background-size: 100% 100%;
+}
+.load_spot{
+    position: absolute;
+    top: 2.85rem;
+    left: 1.04rem;
+    z-index: 10;
+    width: 0.47rem;
+    height: 0.04rem;
+    background-size: 100% 100%;
+    overflow: hidden;
+    clip: rect(0,0.47rem,0.04rem,0);
+    -webkit-animation: load_spot 1.65s linear 0s infinite;
+    animation: load_spot 1.65s linear 0s infinite;
+}
+
+/**
+ *首页
+ */
+#home{}
+.home_box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+}
+.home_box::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    border-left: 1px solid rgba(0, 0, 0, 0);
+}
+.home_box::-webkit-scrollbar {
+    width: 2px;
+    height: 13px;
+    background-color: transparent;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+.home_box::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    background-clip: padding-box;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    min-height: 28px;
+}
+.home_inner{
+    position: relative;
+    z-index: 10;
+    width: 34rem;
+    height: 15rem;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.home_con{
+    position: absolute;
+    z-index: 10;
+    width: 3.75rem;
+    height: 7.5rem;
+    background-size: 100% 100%;
+}
+.home_con8,.home_con17{
+    width: 4rem;
+}
+.home_con0,.home_con1,.home_con2,.home_con3,.home_con4,.home_con5,.home_con6,.home_con7,.home_con8{
+    top: 0;
+}
+.home_con9,.home_con10,.home_con11,.home_con12,.home_con13,.home_con14,.home_con15,.home_con16,.home_con17{
+    top: 7.5rem;
+}
+.home_con0{
+    left: 0;
+}
+.home_con1{
+    left: 3.75rem;
+}
+.home_con2{
+    left: 7.5rem;
+}
+.home_con3{
+    left: 11.25rem;
+}
+.home_con4{
+    left: 15rem;
+}
+.home_con5{
+    left: 18.75rem;
+}
+.home_con6{
+    left: 22.5rem;
+}
+.home_con7{
+    left: 26.25rem;
+}
+.home_con8{
+    left: 30rem;
+}
+.home_con9{
+    left: 0;
+}
+.home_con10{
+    left: 3.75rem;
+}
+.home_con11{
+    left: 7.5rem;
+}
+.home_con12{
+    left: 11.25rem;
+}
+.home_con13{
+    left: 15rem;
+}
+.home_con14{
+    left: 18.75rem;
+}
+.home_con15{
+    left: 22.5rem;
+}
+.home_con16{
+    left: 26.25rem;
+}
+.home_con17{
+    left: 30rem;
+}
+.num{
+    position: fixed;
+    left: 0.44rem;
+    bottom: 0.62rem;
+    z-index: 10;
+    width: 1.86rem;
+    height: 0.67rem;
+    background-size: 100% 100%;
+}
+.magazine_btn,.shirt_btn,.CD_btn,.poster_btn{
+    /*border: 1px solid #f00;*/
+}
+.magazine_btn{
+    position: absolute;
+    top: 4.92rem;
+    left: 4.24rem;
+    z-index: 10;
+    width: 1.73rem;
+    height: 1.29rem;
+}
+.shirt_btn{
+    position: absolute;
+    top: 3.14rem;
+    left: 11.63rem;
+    z-index: 10;
+    width: 1.32rem;
+    height: 2.89rem;
+}
+.CD_btn{
+    position: absolute;
+    top: 4.7rem;
+    left: 20.49rem;
+    z-index: 10;
+    width: 1.56rem;
+    height: 1.27rem;
+}
+.poster_btn{
+    position: absolute;
+    top: 3.61rem;
+    left: 28.67rem;
+    z-index: 10;
+    width: 2.2rem;
+    height: 3.58rem;
+}
+
+/**
+ *提示
+ */
+#tips{
+    position: fixed;
+}
+.tips_rule{
+    position: absolute;
+    top: 4.79rem;
+    left: 0.46rem;
+    z-index: 10;
+    width: 6.69rem;
+    height: 2.71rem;
+    background-size: 100% 100%;
+}
+.tips_swipe{
+    position: absolute;
+    top: 10.79rem;
+    left: 0;
+    z-index: 10;
+    width: 7.5rem;
+    height: 1.98rem;
+    background-size: 100% 100%;
+}
+.tips_magazine,.tips_shirt,.tips_CD,.tips_poster{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    width: 5.71rem;
+    height: 8.05rem;
+    margin: auto;
+    background-size: 100% 100%;
+    opacity: 0;
+    -webkit-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+}
+.tips_magazine.show,.tips_shirt.show,.tips_CD.show,.tips_poster.show{
+    -webkit-animation: scale .3s ease-in-out 0s 1 forwards;
+    animation: scale .3s ease-in-out 0s 1 forwards;
+}
+.tips_btn{
+    position: absolute;
+    top: 6.49rem;
+    left: 1.25rem;
+    z-index: 10;
+    width: 3.21rem;
+    height: 1.07rem;
+    background-size: 100% 100%;
+}
+
+/**
+ *尾页
+ */
+#last{
+
+}
+.enter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+.enter img{
+    width: 100%;
+}
+.light{
+    position: absolute;
+    top: 3.2rem;
+    left: 0;
+    z-index: 10;
+    width: 6.42rem;
+    height: 10.62rem;
+    background-size: 100% 100%;
+    opacity: 0.6;
+    -webkit-animation: light .65s linear 0s infinite alternate;
+    animation: light .65s linear 0s infinite alternate;
+}
+.door_txt1{
+    position: absolute;
+    top: 9.91rem;
+    left: 2.82rem;
+    z-index: 10;
+    width: 2.43rem;
+    height: 0.33rem;
+    background-size: 100% 100%;
+    opacity: 0;
+}
+.door_txt2{
+    position: absolute;
+    top: 10.47rem;
+    left: 2.45rem;
+    z-index: 10;
+    width: 3.18rem;
+    height: 0.34rem;
+    background-size: 100% 100%;
+    opacity: 0;
+}
+.logo{
+    position: fixed;
+    top: 0.5rem;
+    left: 0.55rem;
+    z-index: 10;
+    width: 3.27rem;
+    height: 0.88rem;
+    background-size: 100% 100%;
+    opacity: 0;
+}
+.slogan{
+    position: absolute;
+    top: 3.02rem;
+    /*left: 0.47rem;*/
+    right: 0;
+    left: 0;
+    z-index: 10;
+    width: 6.73rem;
+    height: 2.93rem;
+    margin: auto;
+    background-size: 100% 100%;
+    opacity: 0;
+    -webkit-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+}
+.slogan.show{
+    -webkit-animation: scale .5s ease-in-out 0s 1 forwards;
+    animation: scale .5s ease-in-out 0s 1 forwards;
+}
+.erweima{
+    position: absolute;
+    top: 6.86rem;
+    /*left: 2.36rem;*/
+    right: 0;
+    left: 0;
+    z-index: 10;
+    width: 2.53rem;
+    height: 2.53rem;
+    margin: auto;
+    opacity: 0;
+}
+.erweima img{
+    width: 100%;
+}
+.erweima_txt{
+    position: absolute;
+    top: 9.7rem;
+    /*left: 2.05rem;*/
+    right: 0;
+    left: 0;
+    z-index: 10;
+    width: 3.09rem;
+    height: 0.84rem;
+    margin: auto;
+    background-size: 100% 100%;
+    opacity: 0;
+}
+.music_btn{
+    position: fixed;
+    top: 0.6rem;
+    right: 0.3rem;
+    z-index: 10;
+    width: 0.53rem;
+    height: 0.53rem;
+    background-size: 100% 100%;
+}
+
+/**
+ *动画
+ */
+@-webkit-keyframes load_ball {
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes load_ball {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes load_spot {
+    0%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+    5%{
+        clip: rect(0,0.24rem,0.04rem,0);
+    }
+    30%{
+        clip: rect(0,0.24rem,0.04rem,0);
+    }
+    40%{
+        clip: rect(0,0.32rem,0.04rem,0);
+    }
+    50%{
+        clip: rect(0,0.32rem,0.04rem,0);
+    }
+    60%{
+        clip: rect(0,0.41rem,0.04rem,0);
+    }
+    70%{
+        clip: rect(0,0.41rem,0.04rem,0);
+    }
+    80%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+    90%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+    100%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+}
+@keyframes load_spot {
+    0%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+    5%{
+        clip: rect(0,0.24rem,0.04rem,0);
+    }
+    30%{
+        clip: rect(0,0.24rem,0.04rem,0);
+    }
+    40%{
+        clip: rect(0,0.32rem,0.04rem,0);
+    }
+    50%{
+        clip: rect(0,0.32rem,0.04rem,0);
+    }
+    60%{
+        clip: rect(0,0.41rem,0.04rem,0);
+    }
+    70%{
+        clip: rect(0,0.41rem,0.04rem,0);
+    }
+    80%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+    90%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+    100%{
+        clip: rect(0,0.47rem,0.04rem,0);
+    }
+}
+
+@-webkit-keyframes light {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.6;
+    }
+}
+@keyframes light {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.6;
+    }
+}
+
+@-webkit-keyframes scale {
+    0%{
+        opacity: 0;
+        -webkit-transform: scale(0.6,0.6);
+    }
+    50%{
+        opacity: 1;
+        -webkit-transform: scale(1.1,1.1);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: scale(1,1);
+    }
+}
+@keyframes scale {
+    0%{
+        opacity: 0;
+        transform: scale(0.6,0.6);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1.1,1.1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1,1);
+    }
+}
