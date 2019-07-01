@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>桶</title>
+    <style>
+        #wrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            perspective: 12rem;
+        }
+        #bucket,.face{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 3rem;
+            height: 3rem;
+        }
+        #bucket{
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+        .face{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        .face span{
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            transform: rotateX(180deg);
+            font-size: .24rem;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="bucket">
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+    </div>
+</div>
+<script>
+    window.onload = function(){
+
+        var wrapper = document.getElementById('wrapper');
+        var cube = document.getElementById('cube');
+        var startX,startY,endX,endY;
+        var isStart = false;
+        var rotateX = 0;
+        var rotateY = 0;
+
+        wrapper.onmousedown = cubeStart;
+        wrapper.onmousemove = cubeMove;
+        wrapper.onmouseup = cubeEnd;
+
+        function cubeStart(e){
+            //console.log('Start');
+            isStart = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+        function cubeMove(e){
+            if(isStart){
+                //console.log('Move');
+                endX = e.clientX;
+                endY = e.clientY;
+                if(endX > startX){
+                    rotateY += 2;
+                    startX = e.clientX;
+                }else if(endX < startX){
+                    rotateY -= 2;
+                    startX = e.clientX;
+                }
+                if(endY > startY){
+                    rotateX -= 2;
+                    startY = e.clientY;
+                }else if(endY < startY){
+                    rotateX += 2;
+                    startY = e.clientY;
+                }
+                cube.style.transform = 'rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) rotateZ(0deg)';
+            }
+        }
+        function cubeEnd(e){
+            //console.log('End');
+            isStart = false;
+        }
+
+    };
+</script>
+</body>
+</html>

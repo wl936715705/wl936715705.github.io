@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>坐标</title>
+    <style>
+        #wrapper{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            perspective: 1600px;
+            /*perspective-origin: 150% -50%;*/
+        }
+        #coordinate,.x,.y,.z{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 400px;
+            height: 400px;
+        }
+        #coordinate{
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform-style: preserve-3d;
+        }
+        .x,.y,.z{
+            opacity: .7;
+            height: 400px;
+        }
+        .x{
+            background: #ff0000;
+            transform: rotateX(90deg);
+        }
+        .y{
+            background: #ffff00;
+            transform: rotateY(90deg);
+        }
+        .z{
+            background: #0000ff;
+            transform: rotateZ(90deg);
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="coordinate">
+        <div class="x"></div>
+        <div class="y"></div>
+        <div class="z"></div>
+    </div>
+</div>
+<script>
+    window.onload = function(){
+
+        var wrapper = document.getElementById('wrapper');
+        var coordinate = document.getElementById('coordinate');
+        var startX,startY,endX,endY;
+        var isStart = false;
+        var rotateX = 0;
+        var rotateY = 0;
+
+        wrapper.onmousedown = cubeStart;
+        wrapper.onmousemove = cubeMove;
+        wrapper.onmouseup = cubeEnd;
+
+        function cubeStart(e){
+            isStart = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+        function cubeMove(e){
+            if(isStart){
+                endX = e.clientX;
+                endY = e.clientY;
+                if(endX > startX){
+                    rotateY += 2;
+                    startX = e.clientX;
+                }else if(endX < startX){
+                    rotateY -= 2;
+                    startX = e.clientX;
+                }
+                if(endY > startY){
+                    rotateX -= 2;
+                    startY = e.clientY;
+                }else if(endY < startY){
+                    rotateX += 2;
+                    startY = e.clientY;
+                }
+                coordinate.style.transform = 'rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) rotateZ(0deg)';
+            }
+        }
+        function cubeEnd(e){
+            isStart = false;
+        }
+    };
+</script>
+</body>
+</html>
