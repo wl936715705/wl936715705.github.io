@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>下拉菜单初始化</title>
+</head>
+<body>
+    <select class="select">
+        <option value='0'>请选择</option>
+        <option value='1'>a</option>
+        <option value='2'>b</option>
+        <option value='3'>c</option>
+        <option value='4'>d</option>
+    </select>
+    
+    <div class="btn-reset"></div>
+    
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script>
+        $(function(){
+        
+            $('.btn-reset').on('click',function(){
+            
+                $('.select').val('请选择');
+                $('.select option:selected').val('0');
+            });
+        
+        });
+    </script>
+</body>
+</html>
