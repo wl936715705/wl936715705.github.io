@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>下拉菜单初始化</title>
     <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            margin: 100px auto 0;
+        }
+        .select{
+            width: 100px;
+        }
         .btn-reset{
             width: 100px;
             height: 20px;
+            margin-top: 20px;
             line-height: 20px;
             font-size: 14px;
             text-align: center;
@@ -18,27 +27,31 @@
     </style>
 </head>
 <body>
+<div class="container">
     <select class="select">
-        <option value='0'>请选择</option>
+        <option value='请选择'>请选择</option>
         <option value='1'>a</option>
         <option value='2'>b</option>
         <option value='3'>c</option>
         <option value='4'>d</option>
     </select>
-    
+
     <div class="btn-reset">初始化</div>
-    
-    <script src="js/jquery-1.10.1.min.js"></script>
-    <script>
-        $(function(){
-        
-            $('.btn-reset').on('click',function(){
-            
-                $('.select').val('请选择');
-                $('.select option:selected').val('0');
-            });
-       
+</div>
+
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    $(function(){
+
+        $('.select').change(function(){
+            console.log($(this).find('option:selected').val());
         });
-    </script>
+
+        $('.btn-reset').on('click',function(){
+            $('.select').val('请选择');
+            $('.select option[value = "请选择"]').attr('selected',true);
+        });
+    });
+</script>
 </body>
 </html>
